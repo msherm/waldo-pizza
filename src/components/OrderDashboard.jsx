@@ -1,6 +1,7 @@
 import React from 'react';
 import PizzaBuilder from './PizzaBuilder.jsx';
 import Pizza from './Pizza.jsx';
+import { calculateTotalCost } from '../common/functions.js';
 
 const OrderDashboard = (props) => {
   const togglePizzaBuilder = (event) => {
@@ -12,23 +13,21 @@ const OrderDashboard = (props) => {
       <Pizza key={ i } pizzaId={ i } pizzaData={ props.pizzaData } orderDetails={ order } removePizzaFromOrder={ props.removePizzaFromOrder }/>
     );
   });
-
   let pizzaBuilderInterface = '';
+  let pizzaBuilderVisibilityButton = <button className="add-pizza-button" onClick={ togglePizzaBuilder }>Add a Pizza</button>;
 
-  if (props.builderVisible) {
-    pizzaBuilderInterface = <PizzaBuilder pizzaData={ props.pizzaData } togglePizzaBuilder={ props.togglePizzaBuilder } addPizzaToOrder={ props.addPizzaToOrder }/>;
+  if (props.builder.visible) {
+    pizzaBuilderInterface = <PizzaBuilder pizzaData={ props.pizzaData } builder={ props.builder } togglePizzaBuilder={ props.togglePizzaBuilder } selectPizzaSize={ props.selectPizzaSize } toggleToppingSelection={ props.toggleToppingSelection } addPizzaToOrder={ props.addPizzaToOrder }/>;
+    pizzaBuilderVisibilityButton = <button className="cancel-button" onClick={ togglePizzaBuilder }>Cancel</button>;
   }
+
+  const orderPizzas = pizzas.length ? <div><h3>Order Pizzas</h3><ul className="order-pizzas">{ pizzas }</ul><div className="pizza-price">Total ${ calculateTotalCost(props.pizzaData, props.orders).toFixed(2) }</div><button className="place-order-button">Place Order</button></div> : null;
 
   return (
     <div className="order-dashboard">
-      <button className="add-pizza-button" onClick={ togglePizzaBuilder }>Add a Pizza</button>
+      { pizzaBuilderVisibilityButton }
       { pizzaBuilderInterface }
-      <h3>Order Pizzas</h3>
-      <ul className="order-pizzas">
-        { pizzas }
-      </ul>
-      <h3>Total</h3>
-      <button className="place-order-button">Place Order</button>
+      { orderPizzas }
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import PizzaSizeSelector from './PizzaSizeSelector.jsx';
 import PizzaToppings from './PizzaToppings.jsx';
+import { calculatePizzaCost } from '../common/functions.js';
 
 class PizzaBuilder extends React.Component {
 	constructor() {
@@ -41,22 +42,7 @@ class PizzaBuilder extends React.Component {
   	});
 
   	const pizzaToppingsPanel = this.state.sizeIndex > -1 ? <PizzaToppings size={ this.props.pizzaData.sizes[this.state.sizeIndex].name } toppings={ this.props.pizzaData.toppings } selectedToppings={ this.state.toppings } toggleToppingSelection={ this.toggleToppingSelection }/> : null;
-
-  	let basePrice = 0;
-  	let toppingsTotalPrice = 0;
-  	let addToOrderButton = null;
-
-  	if (this.state.sizeIndex >= 0) {
-  		basePrice = this.props.pizzaData.sizes[this.state.sizeIndex].price;
-
-  		if (this.state.toppings) {
-	  		toppingsTotalPrice = this.state.toppings.reduce(function(acc, toppingIndex) {
-		  		return acc + this.props.pizzaData.toppings[toppingIndex].price;
-				}.bind(this), 0);
-	  	};
-
-	  	addToOrderButton = <button className="add-to-order-button" type="submit">Add to order</button>;
-  	}
+  	const addToOrderButton = this.state.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to order</button> : null;
 
     return (
 	    <div id="pizza-builder">
@@ -67,7 +53,7 @@ class PizzaBuilder extends React.Component {
 		    		{ sizes }
 		    	</ul>
 		      { pizzaToppingsPanel }
-		      <h4 className="pizza-price">Price: ${ (basePrice + toppingsTotalPrice).toFixed(2) }</h4>
+		      <div className="pizza-price">Price: ${ (calculatePizzaCost(this.props.pizzaData, this.state.sizeIndex, this.state.toppings)).toFixed(2) }</div>
 		      { addToOrderButton }
 	      </form>
 	    </div>

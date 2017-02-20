@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PizzaSizeSelector = (props) => {
-  let toppingsCost = 0;
   const toppings = props.defaultToppings.map((toppingIndex, i) => {
     return (
       <li key={ i }>
@@ -21,7 +20,7 @@ const PizzaSizeSelector = (props) => {
   return (
     <li className={ props.selected }>
       <h5>{ props.size.name }</h5>
-      <strong>${ (props.size.price + toppingsCost) }</strong>
+      <strong>${ props.size.price }</strong>
       <div>Standard Toppings:</div>
       <ul className="toppings">
         { toppings }

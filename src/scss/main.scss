@@ -1,11 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Oxygen');
-body {font-family: "Oxygen", sans-serif;}
-h1,h2,h3,h4,h5,h6 {font-weight: bold; margin: 10px 0;}
-h1 {font-size: 2.2em;}
-h3 {font-size: 2.0em; margin-bottom: 20px;}
-h4 {font-size: 1.4em;}
-h4.pizza-price {border-top: 1px solid #eee; padding-top: 20px;}
-h5 {font-size: 1.3em;}
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
+
+body {
+  font-family: "Oxygen", sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+h3 {
+  font-size: 2.0em;
+  margin: 20px 0;
+}
+
+h4 {
+  font-size: 1.4em;
+}
+
+h5 {
+  font-size: 1.3em;
+}
 
 .container {
   margin: 20px;
@@ -35,42 +54,42 @@ button {
   cursor: pointer;
   transition-duration: 0.3s;
   -webkit-transition-duration: 0.3s;
-}
 
-button.add-pizza-button, button.add-to-order-button {
-  border: 2px solid #03c;
-  background-color: #03c;
-  width: 200px;
-}
+  &.add-pizza-button, &.add-to-order-button {
+    border: 2px solid #03c;
+    background-color: #03c;
+    width: 200px;
 
-button.add-pizza-button:hover, button.add-to-order-button:hover {
-  border: 2px solid #03c;
-  background-color: #fff;
-  color: #03c;
-}
+    &:hover {
+        border: 2px solid #03c;
+        background-color: #fff;
+        color: #03c;
+    }
+  }
 
-button.remove-pizza-button {
-  border: 2px solid #c33;
-  background-color: #c33;
-  width: 200px;
-}
+  &.remove-pizza-button, &.cancel-button {
+    border: 2px solid #c33;
+    background-color: #c33;
+    width: 200px;
 
-button.remove-pizza-button:hover {
-  border: 2px solid #c33;
-  background-color: #fff;
-  color: #c33;
-}
+    &:hover {
+      border: 2px solid #c33;
+      background-color: #fff;
+      color: #c33;
+    }
+  }
 
-button.place-order-button {
-  border: 2px solid #096;
-  background-color: #096;
-  width: 200px;
-}
+  &.place-order-button {
+    border: 2px solid #096;
+    background-color: #096;
+    width: 200px;
 
-button.place-order-button:hover {
-  border: 2px solid #096;
-  background-color: #fff;
-  color: #096;
+    &:hover {
+      border: 2px solid #096;
+      background-color: #fff;
+      color: #096;
+    }
+  }
 }
 
 ul.builder-size-selection {
@@ -78,105 +97,105 @@ ul.builder-size-selection {
   flex-flow: row wrap;
   justify-content: space-around;
   margin: 30px 0;
-}
 
-ul.builder-size-selection > li {
-  width: 200px;
-  height: auto;
-}
+  > li {
+    width: 200px;
+    height: auto;
 
-ul.builder-size-selection > li > strong {
-  display: block;
-  font-size: 1.6em;
-  margin: 10px 0;
-}
+    &.selected {
+      background-color: #038;
+      color: #fff;
+    }
 
-ul.builder-size-selection > li > div {
-  font-size: 1em;
-  margin-bottom: 4px;
-}
+    > strong {
+      display: block;
+      font-size: 1.6em;
+      margin: 10px 0;
+    }
 
-ul.builder-size-selection > li > ul.toppings > li {
-  display: block;
-  font-size: .9em;
-  margin: 5px 0;
-}
+    > div {
+      font-size: 1em;
+      margin-bottom: 4px;
+    }
 
-ul.builder-size-selection > li > em {
-  display: block;
-  margin: 10px 0;
-}
+    > ul.toppings > li {
+      display: block;
+      font-size: .9em;
+      margin: 5px 0;
+    }
 
-ul.builder-size-selection > li.selected {
-  background-color: #038;
-  color: #fff;
-}
+    > em {
+      display: block;
+      margin: 10px 0;
+    }
 
-ul.builder-size-selection > li > button {
-  border: 2px solid #038;
-  background-color: #038;
-  width: 80%;
-}
+    > button {
+      border: 2px solid #038;
+      background-color: #038;
+      width: 80%;
+      
+      &:hover {
+        border: 2px solid #038;
+        background-color: #fff;
+        color: #038;
+      }
+    }
 
-ul.builder-size-selection > li > .selected-size {
-  display: block;
-  width: 75%;
-  border: 1px solid #fff;
-  border-left: 0;
-  border-right: 0;
-  padding: 15px;
-  margin: 20px auto 10px;
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-ul.builder-size-selection > li > button:hover {
-  border: 2px solid #038;
-  background-color: #fff;
-  color: #038;
+    > .selected-size {
+      display: block;
+      width: 75%;
+      border: 1px solid #fff;
+      border-left: 0;
+      border-right: 0;
+      padding: 15px;
+      margin: 20px auto 10px;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+  }
 }
 
 ul.builder-toppings-selection {
   display: flex;
   flex-flow: row wrap;
   margin: 30px 10%;
-}
 
-ul.builder-toppings-selection > li {
-  width: 20%;
-  min-height: 60px;
-  text-align: left;
-}
+  > li {
+    width: 20%;
+    min-height: 60px;
+    text-align: left;
 
-ul.builder-toppings-selection > li > label {
-  font-weight: bold;
-}
+    > label {
+      font-weight: bold;
+    }
 
-ul.builder-toppings-selection > li > label > span {
-  display: block;
-  padding-left: 20px;
-  font-size: .9em;
-  font-weight: normal;
-}
+    > span {
+      display: block;
+      padding-left: 20px;
+      font-size: .9em;
+      font-weight: normal;
+    }
 
-ul.builder-toppings-selection > li > button {
-  border: 2px solid #038;
-  background-color: #038;
-  width: 200px;
+    > button {
+      border: 2px solid #038;
+      background-color: #038;
+      width: 200px;
+    }
+  }
 }
 
 ul.order-pizzas {
   border: 1px solid #777;
   padding: 20px;
-}
 
-ul.order-pizzas > li {
-  border-bottom: 1px solid #e7e7e7;
-  padding: 10px 0;
-}
+  > li {
+    border-bottom: 1px solid #e7e7e7;
+    padding: 10px 0;
 
-ul.order-pizzas > li:last-of-type {
-  border: 0;
+    &:last-of-type {
+      border: 0;
+    }
+  }
 }
 
 .order-toppings-title {
@@ -188,6 +207,12 @@ ul.order-toppings {
   font-size: .9em;
 }
 
-ul.order-toppings > li {
+.pizza-price {
+  font-size: 1.8em;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
 
+  .order-pizzas & {
+    font-size: 1.3em;
+  }
 }

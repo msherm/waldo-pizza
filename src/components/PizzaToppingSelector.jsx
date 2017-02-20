@@ -7,7 +7,7 @@ const PizzaToppingSelector = (props) => {
 
   return (
     <li className={ props.selected }>
-      <input type="checkbox" value={ props.toppingIndex } checked={props.isChecked} onChange={ toggleToppingSelection }/>
+      <input type="checkbox" value={ props.toppingIndex } checked={ props.isChecked } onChange={ toggleToppingSelection }/>
       <label>{ props.name } <span>(${ props.price })</span></label>
     </li>
   );

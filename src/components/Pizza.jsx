@@ -1,4 +1,5 @@
 import React from 'react';
+import { calculatePizzaCost } from '../common/functions.js';
 
 const Pizza = (props) => {
   const toppings = props.orderDetails.toppings.map((toppingIndex, i) => {
@@ -20,6 +21,7 @@ const Pizza = (props) => {
       <ul className="order-toppings">
         { toppings }
       </ul>
+      <div className="pizza-price">Price: ${ (calculatePizzaCost(props.pizzaData, props.orderDetails.size, props.orderDetails.toppings)).toFixed(2) }</div>
       <button className="remove-pizza-button" onClick={ removePizzaFromOrder }>Remove Pizza</button>
     </li>
   );

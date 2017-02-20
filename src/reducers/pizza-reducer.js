@@ -24,8 +24,6 @@ const initialState = {
 
 const pizzaReducer = function(state = initialState, action) {
   switch(action.type) {
-    case types.TOGGLE_PIZZA_BUILDER:
-      return Object.assign({}, state, { builderVisible: !state.builderVisible });
   }
 
   return state;
