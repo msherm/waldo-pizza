@@ -1,12 +1,7 @@
 import * as types from '../actions/action-types';
 
 const initialState = {
-  sizes: [
-    { name: "small", price: 5, maxToppings: 4, defaultToppings: [0] },
-    { name: "medium", price: 7.05, maxToppings: 6, defaultToppings: [0, 1] },
-    { name: "large", price: 9.99, maxToppings: 8, defaultToppings: [0, 1, 5] },
-    { name: "giant", price: 13.5, maxToppings: null, defaultToppings: [0, 1, 5]  },
-  ],
+  sizes: [],
   toppings: [
     { name: "mozzarella", price: 0 },
     { name: "buffalo mozzarella", price: 1.5 },
@@ -24,6 +19,15 @@ const initialState = {
 
 const pizzaReducer = function(state = initialState, action) {
   switch(action.type) {
+    case types.UPDATE_PIZZA_DATA:
+      return Object.assign({}, state, { sizes: action.pizzaSizes.map((pizzaSize, i) => {
+                                        return {
+                                          name: pizzaSize.name,
+                                          price: pizzaSize.basePrice,
+                                          maxToppings: pizzaSize.maxToppings,
+                                          defaultToppings: [0, 1]
+                                        }
+                                      })});
   }
 
   return state;

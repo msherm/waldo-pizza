@@ -1,10 +1,9 @@
 import * as types from './action-types';
 
-export const addBaseSize = (size, cost) => {
+export const updatePizzaData = (pizzaSizes) => {
   return {
-    type: types.ADD_BASE_SIZE,
-    size,
-    cost
+    type: types.UPDATE_PIZZA_DATA,
+    pizzaSizes
   };
 }
 
