@@ -29,7 +29,7 @@ const PizzaBuilder = (props) => {
 	}
 
 	const pizzaToppingsPanel = props.builder.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } size={ props.pizzaData.sizes[props.builder.sizeIndex].name } toppings={ props.pizzaData.toppings } selectedToppings={ props.builder.toppings } toggleToppingSelection={ toggleToppingSelection }/> : null;
-	const addToOrderButton = props.builder.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to order</button> : null;
+	const addToOrderButton = props.builder.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to Order</button> : null;
 
   return (
     <div id="pizza-builder">
