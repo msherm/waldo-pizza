@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 import App from '../components/App.jsx';
 import store from '../store';
 import * as types from '../actions/action-types.js';
-import { togglePizzaBuilder } from '../actions/action-creators.js';
+import { togglePizzaBuilder, addPizzaToOrder, removePizzaFromOrder } from '../actions/action-creators.js';
 
 class AppContainer extends React.Component {
   render() {
     return (
-      <App pizzaData={ this.props.pizzaData } builderVisible={ this.props.builderVisible } orders={ this.props.orders } togglePizzaBuilder={ this.props.handleTogglePizzaBuilder }/>
+      <App pizzaData={ this.props.pizzaData }
+           builderVisible={ this.props.builderVisible }
+           orders={ this.props.orders }
+           togglePizzaBuilder={ this.props.handleTogglePizzaBuilder }
+           addPizzaToOrder={ this.props.handleAddPizzaToOrder }
+           removePizzaFromOrder={ this.props.handleRemovePizzaFromOrder }/>
     );
   }
 }
@@ -25,6 +30,12 @@ const mapDispatchToProps = function(dispatch) {
   return {
     handleTogglePizzaBuilder: () => {
       dispatch(togglePizzaBuilder());
+    },
+    handleAddPizzaToOrder: (sizeIndex, toppings) => {
+      dispatch(addPizzaToOrder(sizeIndex, toppings));
+    },
+    handleRemovePizzaFromOrder: (pizzaId) => {
+      dispatch(removePizzaFromOrder(pizzaId));
     }
   };
 }

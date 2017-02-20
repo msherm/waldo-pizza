@@ -3,14 +3,9 @@ import React from 'react';
 const PizzaSizeSelector = (props) => {
   let toppingsCost = 0;
   const toppings = props.defaultToppings.map((toppingIndex, i) => {
-    const toppingPrice = props.toppings[toppingIndex].price ? <strong>${ props.toppings[toppingIndex].price }</strong> : null;
-
-    toppingsCost += props.toppings[toppingIndex].price;
-
     return (
       <li key={ i }>
         <div>{ props.toppings[toppingIndex].name }</div>
-        { toppingPrice }
       </li>
     );
   });
@@ -19,10 +14,11 @@ const PizzaSizeSelector = (props) => {
     props.selectPizzaSize(props.choice);
   }
 
+  //if the current selection is the same as this choice, indicated that it's currently selected, otherwise render the select button
   const pizzaSelectorButton = props.currentSizeIndex === props.choice ? 'Selected' : <button onClick={ selectPizzaSize }>Select</button>;
 
   return (
-    <li className={ props.selected }>
+    <li>
       <h5>{ props.size.name }</h5>
       <strong>${ (props.size.price + toppingsCost) }</strong>
       <div>Standard Toppings</div>

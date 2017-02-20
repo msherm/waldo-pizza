@@ -5,7 +5,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <OrderDashboard pizzaData={ this.props.pizzaData } builderVisible={ this.props.builderVisible } orders={ this.props.orders } togglePizzaBuilder={ this.props.togglePizzaBuilder }/>
+        <OrderDashboard pizzaData={ this.props.pizzaData }
+				  builderVisible={ this.props.builderVisible }
+				  orders={ this.props.orders }
+				  togglePizzaBuilder={ this.props.togglePizzaBuilder }
+				  addPizzaToOrder={ this.props.addPizzaToOrder }
+				  removePizzaFromOrder={ this.props.removePizzaFromOrder }/>
       </div>
     );
   }

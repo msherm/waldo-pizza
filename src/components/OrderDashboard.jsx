@@ -1,6 +1,6 @@
 import React from 'react';
 import PizzaBuilder from './PizzaBuilder.jsx';
-import Order from './Order.jsx';
+import Pizza from './Pizza.jsx';
 
 const OrderDashboard = (props) => {
   const togglePizzaBuilder = (event) => {
@@ -9,15 +9,14 @@ const OrderDashboard = (props) => {
 
   const orders = props.orders.map((order, i) => {
     return (
-      <Order key={ i } orderId={ i } orderDetails={ order }/>
+      <Pizza key={ i } pizzaId={ i } pizzaData={ props.pizzaData } orderDetails={ order } removePizzaFromOrder={ props.removePizzaFromOrder }/>
     );
   });
 
   let pizzaBuilderInterface = '';
 
   if (props.builderVisible) {
-    console.log(props.pizzaData);
-    pizzaBuilderInterface = <PizzaBuilder pizzaData={ props.pizzaData }/>;
+    pizzaBuilderInterface = <PizzaBuilder pizzaData={ props.pizzaData } togglePizzaBuilder={ props.togglePizzaBuilder } addPizzaToOrder={ props.addPizzaToOrder }/>;
   }
 
   return (

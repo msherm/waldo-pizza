@@ -7,19 +7,23 @@ class PizzaBuilder extends React.Component {
 		super();
 
 		this.state = {
-			order: {
-				sizeIndex: null,
-				toppings: []
-			}
+			sizeIndex: undefined,
+			toppings: []
 		}
 
 		this.selectPizzaSize = this.selectPizzaSize.bind(this);
 		this.toggleToppingSelection = this.toggleToppingSelection.bind(this);
+		this.addPizzaToOrder = this.addPizzaToOrder.bind(this);
 	}
 
 	selectPizzaSize(sizeIndex) {
 		const initialToppings = this.props.pizzaData.sizes[sizeIndex].defaultToppings.slice();
 		this.setState({ sizeIndex: sizeIndex, toppings: initialToppings });
+	}
+
+	addPizzaToOrder() {
+		this.props.addPizzaToOrder(this.state.sizeIndex, this.state.toppings);
+		this.props.togglePizzaBuilder();
 	}
 
 	toggleToppingSelection(toppingIndex) {
@@ -31,15 +35,29 @@ class PizzaBuilder extends React.Component {
 
   render() {
   	const sizes = this.props.pizzaData.sizes.map((size, i) => {
-  		let selected = '';
-  		if (this.state.size === i) {
-  			selected = 'selected';
-  		}
-  		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ this.state.sizeIndex} toppings={ this.props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selected={ selected } selectPizzaSize={ this.selectPizzaSize }/>;
+  		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ this.state.sizeIndex} toppings={ this.props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selectPizzaSize={ this.selectPizzaSize }/>;
   	});
 
-  	const selectedBase = this.state.sizeIndex >= 0 ? <strong>{ this.props.pizzaData.sizes[this.state.sizeIndex].name }</strong> : null;
+  	const selectedBase = this.state.sizeIndex && this.state.sizeIndex >= 0 ? <strong>{ this.props.pizzaData.sizes[this.state.sizeIndex].name }</strong> : null;
   	const pizzaToppingsPanel = this.state.sizeIndex > -1 ? <PizzaToppings toppings={ this.props.pizzaData.toppings } selectedToppings={ this.state.toppings } toggleToppingSelection={ this.toggleToppingSelection }/> : null;
+
+
+  	let basePrice = 0;
+  	let toppingsTotalPrice = 0;
+  	let addToOrderButton = null;
+
+  	if (this.state.sizeIndex >= 0) {
+  		basePrice = this.props.pizzaData.sizes[this.state.sizeIndex].price;
+
+  		if (this.state.toppings) {
+	  		toppingsTotalPrice = this.state.toppings.reduce(function(acc, toppingIndex) {
+		  		return acc + this.props.pizzaData.toppings[toppingIndex].price;
+				}.bind(this), 0);
+	  	};
+
+	  	addToOrderButton = <button onClick={ this.addPizzaToOrder }>Add to order</button>;
+  	}
+
 
     return (
 	    <div id="pizza-builder">
@@ -51,7 +69,8 @@ class PizzaBuilder extends React.Component {
 	    	{ selectedBase }
 	      <h4>Select your toppings</h4>
 	      { pizzaToppingsPanel }
-	      <button>Add to order</button>
+	      <h4>Total: ${ (basePrice + toppingsTotalPrice).toFixed(2) }</h4>
+	      { addToOrderButton }
 	    </div>
   	);
 	}
