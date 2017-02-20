@@ -35,3 +35,15 @@ class App extends React.Component {
 }
 
 export default App;
+
+App.propTypes = {
+  pizzaData: React.PropTypes.object,
+  builder: React.PropTypes.object,
+  orders: React.PropTypes.array,
+  updatePizzaData: React.PropTypes.func,
+  togglePizzaBuilder: React.PropTypes.func,
+  selectPizzaSize: React.PropTypes.func,
+  toggleToppingSelection: React.PropTypes.func,
+  addPizzaToOrder: React.PropTypes.func,
+  removePizzaFromOrder: React.PropTypes.func
+};

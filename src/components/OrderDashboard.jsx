@@ -33,3 +33,14 @@ const OrderDashboard = (props) => {
 }
 
 export default OrderDashboard;
+
+OrderDashboard.propTypes = {
+  pizzaData: React.PropTypes.object,
+  builder: React.PropTypes.object,
+  updatePizzaData: React.PropTypes.func,
+  togglePizzaBuilder: React.PropTypes.func,
+  addPizzaToOrder: React.PropTypes.func,
+  removePizzaFromOrder: React.PropTypes.func,
+  selectPizzaSize: React.PropTypes.func,
+  toggleToppingSelection: React.PropTypes.func
+};

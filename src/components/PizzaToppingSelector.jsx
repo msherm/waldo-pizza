@@ -16,3 +16,11 @@ const PizzaToppingSelector = (props) => {
 }
 
 export default PizzaToppingSelector;
+
+PizzaToppingSelector.propTypes = {
+  name: React.PropTypes.string,
+  price: React.PropTypes.number,
+  toppingIndex: React.PropTypes.number,
+  isChecked: React.PropTypes.string,
+  addToppingsDisabled: React.PropTypes.bool
+};

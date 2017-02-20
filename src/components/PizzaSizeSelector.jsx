@@ -32,3 +32,9 @@ const PizzaSizeSelector = (props) => {
 }
 
 export default PizzaSizeSelector;
+
+PizzaSizeSelector.propTypes = {
+  toppings: React.PropTypes.array,
+  choice: React.PropTypes.number,
+  size: React.PropTypes.object
+};

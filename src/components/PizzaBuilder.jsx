@@ -44,7 +44,14 @@ const PizzaBuilder = (props) => {
 	      { addToOrderButton }
       </form>
     </div>
-  );
+	);
 }
 
 export default PizzaBuilder;
+
+PizzaBuilder.propTypes = {
+  pizzaData: React.PropTypes.object,
+  builder: React.PropTypes.object,
+  selectPizzaSize: React.PropTypes.func,
+  toggleToppingSelection: React.PropTypes.func
+};

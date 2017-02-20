@@ -18,3 +18,10 @@ const PizzaToppings = (props) => {
 }
 
 export default PizzaToppings;
+
+PizzaToppings.propTypes = {
+  toppings: React.PropTypes.array,
+  selectedToppings: React.PropTypes.array,
+  addToppingsDisabled: React.PropTypes.bool,
+  toggleToppingSelection: React.PropTypes.func
+};

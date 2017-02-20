@@ -28,3 +28,10 @@ const Pizza = (props) => {
 }
 
 export default Pizza;
+
+Pizza.propTypes = {
+  pizzaId: React.PropTypes.number,
+  pizzaData: React.PropTypes.object,
+  orderDetails: React.PropTypes.object,
+  removePizzaFromOrder: React.PropTypes.func
+};
