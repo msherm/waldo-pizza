@@ -165,15 +165,19 @@ ul.builder-toppings-selection {
     min-height: 60px;
     text-align: left;
 
-    > label {
-      font-weight: bold;
+    &.disabled {
+      color: #ddd;
     }
 
-    > span {
-      display: block;
-      padding-left: 20px;
-      font-size: .9em;
-      font-weight: normal;
+    > label {
+      font-weight: bold;
+
+      > span {
+        display: block;
+        padding-left: 20px;
+        font-size: .9em;
+        font-weight: normal;
+      }
     }
 
     > button {

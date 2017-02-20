@@ -41,7 +41,13 @@ class PizzaBuilder extends React.Component {
   		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ this.state.sizeIndex } selected={ selected } toppings={ this.props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selectPizzaSize={ this.selectPizzaSize }/>;
   	});
 
-  	const pizzaToppingsPanel = this.state.sizeIndex > -1 ? <PizzaToppings size={ this.props.pizzaData.sizes[this.state.sizeIndex].name } toppings={ this.props.pizzaData.toppings } selectedToppings={ this.state.toppings } toggleToppingSelection={ this.toggleToppingSelection }/> : null;
+  	let addToppingsDisabled = false;
+
+  	if (this.state.sizeIndex >= 0) {
+  		addToppingsDisabled = this.state.toppings.length >= this.props.pizzaData.sizes[this.state.sizeIndex].maxToppings && this.props.pizzaData.sizes[this.state.sizeIndex].maxToppings !== null ? true : false;
+  	}
+
+  	const pizzaToppingsPanel = this.state.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } size={ this.props.pizzaData.sizes[this.state.sizeIndex].name } toppings={ this.props.pizzaData.toppings } selectedToppings={ this.state.toppings } toggleToppingSelection={ this.toggleToppingSelection }/> : null;
   	const addToOrderButton = this.state.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to order</button> : null;
 
     return (

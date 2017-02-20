@@ -5,9 +5,11 @@ const PizzaToppingSelector = (props) => {
     props.toggleToppingSelection(parseInt(event.target.value, 10));
   }
 
+  const isDisabled = props.addToppingsDisabled && !props.isChecked ? 'disabled' : '';
+
   return (
-    <li className={ props.selected }>
-      <input type="checkbox" value={ props.toppingIndex } checked={ props.isChecked } onChange={ toggleToppingSelection }/>
+    <li className={ isDisabled }>
+      <input type="checkbox" value={ props.toppingIndex } checked={ props.isChecked } onChange={ toggleToppingSelection } disabled={ isDisabled }/>
       <label>{ props.name } <span>(${ props.price })</span></label>
     </li>
   );
