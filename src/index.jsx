@@ -6,7 +6,7 @@ import store from './store.js';
 import AppContainer from './containers/AppContainer.jsx';
 
 //stylesheets
-// import './scss/meyer-reset.scss';
+import './scss/meyer-reset.scss';
 import './scss/main.scss';
 
 render(

@@ -21,7 +21,8 @@ class PizzaBuilder extends React.Component {
 		this.setState({ sizeIndex: sizeIndex, toppings: initialToppings });
 	}
 
-	addPizzaToOrder() {
+	addPizzaToOrder(event) {
+		event.preventDefault();
 		this.props.addPizzaToOrder(this.state.sizeIndex, this.state.toppings);
 		this.props.togglePizzaBuilder();
 	}
@@ -55,22 +56,23 @@ class PizzaBuilder extends React.Component {
 				}.bind(this), 0);
 	  	};
 
-	  	addToOrderButton = <button onClick={ this.addPizzaToOrder }>Add to order</button>;
+	  	addToOrderButton = <input type="submit" value="Add to order"/>;
   	}
-
 
     return (
 	    <div id="pizza-builder">
-	      <h3>Pizza Builder</h3>
-	    	<h4>Select a base size</h4>
-	    	<ul className="pizza-size-selection">
-	    		{ sizes }
-	    	</ul>
-	    	{ selectedBase }
-	      <h4>Select your toppings</h4>
-	      { pizzaToppingsPanel }
-	      <h4>Total: ${ (basePrice + toppingsTotalPrice).toFixed(2) }</h4>
-	      { addToOrderButton }
+	    	<form onSubmit={ this.addPizzaToOrder }>
+		      <h3>Pizza Builder</h3>
+		    	<h4>Select a base size</h4>
+		    	<ul className="builder-size-selection">
+		    		{ sizes }
+		    	</ul>
+		    	{ selectedBase }
+		      <h4>Select your toppings</h4>
+		      { pizzaToppingsPanel }
+		      <h4>Price: ${ (basePrice + toppingsTotalPrice).toFixed(2) }</h4>
+		      { addToOrderButton }
+	      </form>
 	    </div>
   	);
 	}

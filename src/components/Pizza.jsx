@@ -15,12 +15,12 @@ const Pizza = (props) => {
 
   return (
     <li>
-    	Pizza Id: { props.pizzaId }, Size: { props.orderDetails.size }
+      Pizza Id: { props.pizzaId }, Size: { props.orderDetails.size }
       <h4>Toppings</h4>
       <ul className="toppings">
         { toppings }
       </ul>
-      <button onClick={ removePizzaFromOrder }>Remove Pizza</button>
+      <button className="remove-pizza-button" onClick={ removePizzaFromOrder }>Remove Pizza</button>
     </li>
   );
 }

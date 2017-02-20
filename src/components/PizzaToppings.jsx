@@ -8,7 +8,7 @@ const PizzaToppings = (props) => {
   });
 
   return (
-    <ul>
+    <ul className="builder-toppings-selection">
       { toppingSelectors }
     </ul>
   );

@@ -5,6 +5,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+      	<h1>Waldo Pizza</h1>
         <OrderDashboard pizzaData={ this.props.pizzaData }
 				  builderVisible={ this.props.builderVisible }
 				  orders={ this.props.orders }

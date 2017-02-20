@@ -21,14 +21,14 @@ const OrderDashboard = (props) => {
 
   return (
     <div className="order-dashboard">
-      <button onClick={ togglePizzaBuilder }>Add a Pizza</button>
+      <button className="add-pizza-button" onClick={ togglePizzaBuilder }>Add a Pizza</button>
       { pizzaBuilderInterface }
       <h3>Orders</h3>
       <ul className="pending-orders">
         { orders }
       </ul>
       <h3>Total</h3>
-      <button>Place Order</button>
+      <button className="place-order-button">Place Order</button>
     </div>
   );
 }
