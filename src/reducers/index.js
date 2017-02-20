@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
 
+// Reducers
+import ordersReducer from './orders-reducer';
+
 // Combine Reducers
 var reducers = combineReducers({
-		state: {}
+	ordersState: ordersReducer
 });
 
 export default reducers;

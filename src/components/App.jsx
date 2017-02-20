@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+import OrderDashboard from './OrderDashboard.jsx';
 
 class App extends React.Component {
   render() {
     return (
       <div className="container">
-        Let's order some pizza!
+        <OrderDashboard builderVisible={ this.props.builderVisible } orders={ this.props.orders } togglePizzaBuilder={ this.props.togglePizzaBuilder }/>
       </div>
     );
   }

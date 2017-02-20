@@ -1,0 +1,3 @@
+//Actions
+export const ADD_BASE_SIZE = "ADD_BASE_SIZE";
+export const TOGGLE_PIZZA_BUILDER = "TOGGLE_PIZZA_BUILDER";
