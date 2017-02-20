@@ -2,7 +2,7 @@ import * as types from './action-types';
 
 export const addBaseSize = (size, cost) => {
   return {
-    type: types.TOGGLE_PIZZA_BUILDER,
+    type: types.ADD_BASE_SIZE,
     size,
     cost
   };

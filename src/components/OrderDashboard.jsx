@@ -10,25 +10,28 @@ const OrderDashboard = (props) => {
   const cls = 'OrderDashboard' + (props.isSelected ? ' active' : '');
 
   const orders = props.orders.map((order, i) => {
-  	return (
-  		<Order key={ i } orderId={ i } orderDetails={ order }/>
-  	);
+    return (
+      <Order key={ i } orderId={ i } orderDetails={ order }/>
+    );
   });
 
   let pizzaBuilderInterface = '';
 
   if (props.builderVisible) {
-  	pizzaBuilderInterface = <PizzaBuilder/>;
+    console.log(props.pizzaData);
+    pizzaBuilderInterface = <PizzaBuilder pizzaData={ props.pizzaData }/>;
   }
 
   return (
     <div className="order-dashboard">
-    	<button onClick={ togglePizzaBuilder }>Add a Pizza</button>
-    	{ pizzaBuilderInterface }
-    	<h3>Orders</h3>
-    	<h3>Total</h3>
-    	{ orders }
-    	<button>Place Order</button>
+      <button onClick={ togglePizzaBuilder }>Add a Pizza</button>
+      { pizzaBuilderInterface }
+      <h3>Orders</h3>
+      <ul className="pending-orders">
+        { orders }
+      </ul>
+      <h3>Total</h3>
+      <button>Place Order</button>
     </div>
   );
 }

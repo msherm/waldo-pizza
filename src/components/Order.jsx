@@ -10,8 +10,8 @@ const Order = (props) => {
   });
 
   return (
-    <li className="order">
-    	Order: { props.orderId }, Size: { props.orderDetails.size }
+    <li>
+      Order: { props.orderId }, Size: { props.orderDetails.size }
       <h4>Toppings</h4>
       <ul className="toppings">
         { toppings }
