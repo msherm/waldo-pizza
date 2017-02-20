@@ -13,7 +13,7 @@ class App extends React.Component {
       const pizzaSizes = xhr.response.data.pizzaSizes;
       this.props.updatePizzaData(pizzaSizes);
     };
-    xhr.send(JSON.stringify({query: "{pizzaSizes {name, maxToppings, basePrice, toppings {defaultSelected} } }"}));
+    xhr.send(JSON.stringify({query: "{pizzaSizes {name, maxToppings, basePrice, toppings {topping {name, price}, defaultSelected} } }"}));
   }
 
   render() {

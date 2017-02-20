@@ -5,7 +5,7 @@ const Pizza = (props) => {
   const toppings = props.orderDetails.toppings.map((toppingIndex, i) => {
     return (
       <li key={ i }>
-        { props.pizzaData.toppings[toppingIndex].name }
+        { props.pizzaData.sizes[props.orderDetails.size].toppings[toppingIndex].topping.name }
       </li>
     );
   });

@@ -13,10 +13,11 @@ export const togglePizzaBuilder = () => {
   };
 }
 
-export const selectPizzaSize = (sizeIndex) => {
+export const selectPizzaSize = (sizeIndex, defaultToppings) => {
   return {
     type: types.SELECT_PIZZA_SIZE,
-    sizeIndex
+    sizeIndex,
+    defaultToppings
   };
 }
 

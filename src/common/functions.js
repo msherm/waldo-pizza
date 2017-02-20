@@ -6,9 +6,9 @@ export const calculatePizzaCost = (pizzaData, sizeIndex, toppings) => {
 		basePrice = pizzaData.sizes[sizeIndex].price;
 
 		if (toppings) {
-  		toppingsTotalPrice = toppings.reduce(function(acc, toppingIndex) {
-	  		return acc + pizzaData.toppings[toppingIndex].price;
-			}.bind(this), 0);
+  		toppingsTotalPrice = toppings.reduce((acc, toppingIndex) => {
+	  		return acc + pizzaData.sizes[sizeIndex].toppings[toppingIndex].topping.price;
+			}, 0);
   	}
 	}
 
@@ -17,9 +17,9 @@ export const calculatePizzaCost = (pizzaData, sizeIndex, toppings) => {
 
 export const calculateTotalCost = (pizzaData, orders) => {
 	if (orders.length) {
-		return orders.reduce(function(acc, order) {
+		return orders.reduce((acc, order) => {
 	  		return acc + calculatePizzaCost(pizzaData, order.size, order.toppings);
-			}.bind(this), 0);
+			}, 0);
 	}
 
 	return 0;

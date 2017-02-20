@@ -1,16 +1,18 @@
 import React from 'react';
 
 const PizzaSizeSelector = (props) => {
-  const toppings = props.defaultToppings.map((toppingIndex, i) => {
-    return (
-      <li key={ i }>
-        { props.toppings[toppingIndex].name }
-      </li>
-    );
+  const toppings = props.toppings.map((item, i) => {
+    return item.defaultSelected ? <li key={ i }>{ item.topping.name }</li> : null;
   });
 
   const selectPizzaSize = () => {
-    props.selectPizzaSize(props.choice);
+    const defaultToppings = props.toppings.map((item, i) => {
+      return item.defaultSelected ? i : null;
+    })
+    .filter((defaultToppingIndex) => {
+      return defaultToppingIndex !== null && defaultToppingIndex >= 0;
+    });
+    props.selectPizzaSize([props.choice, defaultToppings]);
   }
 
   //if the current selection is the same as this choice, indicated that it's currently selected, otherwise render the select button

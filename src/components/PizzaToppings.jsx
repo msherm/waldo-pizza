@@ -2,9 +2,9 @@ import React from 'react';
 import PizzaToppingSelector from './PizzaToppingSelector.jsx';
 
 const PizzaToppings = (props) => {
-  const toppingSelectors = props.toppings.map((topping, i) => {
+  const toppingSelectors = props.toppings.map((item, i) => {
     const isChecked = (props.selectedToppings && props.selectedToppings.indexOf(i) > -1) ? 'checked' : '';
-    return <PizzaToppingSelector key={ i } toppingIndex={ i } name={ topping.name } price={ topping.price } isChecked={ isChecked } addToppingsDisabled={ props.addToppingsDisabled } toggleToppingSelection={ props.toggleToppingSelection }/>
+    return <PizzaToppingSelector key={ i } toppingIndex={ i } name={ item.topping.name } price={ item.topping.price } isChecked={ isChecked } addToppingsDisabled={ props.addToppingsDisabled } toggleToppingSelection={ props.toggleToppingSelection }/>
   });
 
   return (

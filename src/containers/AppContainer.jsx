@@ -37,8 +37,8 @@ const mapDispatchToProps = function(dispatch) {
     handleTogglePizzaBuilder: () => {
       dispatch(togglePizzaBuilder());
     },
-    handleSelectPizzaSize: (sizeIndex) => {
-      dispatch(selectPizzaSize(sizeIndex));
+    handleSelectPizzaSize: (selectionSizeArr) => {
+      dispatch(selectPizzaSize(selectionSizeArr[0], selectionSizeArr[1]));
     },
     handleToggleToppingSelection: (toppingIndex) => {
       dispatch(toggleToppingSelection(toppingIndex));

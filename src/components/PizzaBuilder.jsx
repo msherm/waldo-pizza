@@ -19,7 +19,7 @@ const PizzaBuilder = (props) => {
 
 	const sizes = props.pizzaData.sizes.map((size, i) => {
 		const selected = props.builder.sizeIndex === i ? 'selected' : '';
-		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ props.builder.sizeIndex } selected={ selected } toppings={ props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selectPizzaSize={ selectPizzaSize }/>;
+		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ props.builder.sizeIndex } selected={ selected } toppings={ size.toppings } size={ size } selectPizzaSize={ selectPizzaSize }/>;
 	});
 
 	let addToppingsDisabled = false;
@@ -28,7 +28,7 @@ const PizzaBuilder = (props) => {
 		addToppingsDisabled = props.builder.toppings.length >= props.pizzaData.sizes[props.builder.sizeIndex].maxToppings && props.pizzaData.sizes[props.builder.sizeIndex].maxToppings !== null ? true : false;
 	}
 
-	const pizzaToppingsPanel = props.builder.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } size={ props.pizzaData.sizes[props.builder.sizeIndex].name } toppings={ props.pizzaData.toppings } selectedToppings={ props.builder.toppings } toggleToppingSelection={ toggleToppingSelection }/> : null;
+	const pizzaToppingsPanel = props.builder.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } size={ props.pizzaData.sizes[props.builder.sizeIndex].name } toppings={ props.pizzaData.sizes[props.builder.sizeIndex].toppings } selectedToppings={ props.builder.toppings } toggleToppingSelection={ toggleToppingSelection }/> : null;
 	const addToOrderButton = props.builder.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to Order</button> : null;
 
   return (

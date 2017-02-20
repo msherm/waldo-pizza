@@ -10,7 +10,7 @@ const PizzaToppingSelector = (props) => {
   return (
     <li className={ isDisabled }>
       <input type="checkbox" value={ props.toppingIndex } checked={ props.isChecked } onChange={ toggleToppingSelection } disabled={ isDisabled }/>
-      <label>{ props.name } <span>(${ props.price })</span></label>
+      <label>{ props.name } <span>(${ (props.price).toFixed(2) })</span></label>
     </li>
   );
 }
