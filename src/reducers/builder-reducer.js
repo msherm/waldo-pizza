@@ -1,4 +1,4 @@
-import * as types from '../actions/action-types';
+import { TOGGLE_PIZZA_BUILDER, SELECT_PIZZA_SIZE, TOGGLE_TOPPING_SELECTION, ADD_PIZZA_TO_ORDER } from '../actions/action-types';
 
 const initialState = {
   visible: false,
@@ -7,19 +7,21 @@ const initialState = {
   addToppingsDisabled: false
 };
 
-const initialToppings = [0, 1];//TODO: pull depending on base size in via graphQL
+const initialToppings = [0, 1];//TODO: pull depending on base size via graphQL
 
 const builderReducer = function(state = initialState, action) {
   switch(action.type) {
-    case types.TOGGLE_PIZZA_BUILDER:
+    case TOGGLE_PIZZA_BUILDER:
       return Object.assign({}, state, { visible: !state.visible });
-    case types.SELECT_PIZZA_SIZE:
-      return Object.assign({}, { sizeIndex: action.sizeIndex, toppings: initialToppings });
-    case types.TOGGLE_TOPPING_SELECTION:
-      return Object.assign({}, state, { toppings: state.toppings.indexOf(toppingIndex) ? //check to see if the toppingIndex already exists in our toppings
-                                                  [...state.toppings.slice(0, state.toppings.indexOf(toppingIndex)), ...state.toppings.slice(state.toppings.indexOf(toppingIndex) + 1)] : //if the toppingIndex is in the pizza builder's toppings remove it
-                                                  [...state.toppings.slice(), toppingIndex],//otherwise push it to the array
+    case SELECT_PIZZA_SIZE:
+      return Object.assign({}, state, { sizeIndex: action.sizeIndex, toppings: initialToppings });
+    case TOGGLE_TOPPING_SELECTION:
+      return Object.assign({}, state, { toppings: state.toppings.indexOf(action.toppingIndex) > -1 ? //check to see if the action.toppingIndex already exists in our toppings
+                                                  [...state.toppings.slice(0, state.toppings.indexOf(action.toppingIndex)), ...state.toppings.slice(state.toppings.indexOf(action.toppingIndex) + 1)] : //if the toppingIndex is in the pizza builder's toppings remove it
+                                                  [...state.toppings.slice(), action.toppingIndex]//otherwise push it to the array
                                       });
+    case ADD_PIZZA_TO_ORDER:
+      return Object.assign({}, initialState);
   }
 
   return state;

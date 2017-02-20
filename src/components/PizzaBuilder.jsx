@@ -3,68 +3,48 @@ import PizzaSizeSelector from './PizzaSizeSelector.jsx';
 import PizzaToppings from './PizzaToppings.jsx';
 import { calculatePizzaCost } from '../common/functions.js';
 
-class PizzaBuilder extends React.Component {
-	constructor() {
-		super();
-
-		this.state = {
-			sizeIndex: undefined,
-			toppings: []
-		}
-
-		this.selectPizzaSize = this.selectPizzaSize.bind(this);
-		this.toggleToppingSelection = this.toggleToppingSelection.bind(this);
-		this.addPizzaToOrder = this.addPizzaToOrder.bind(this);
+const PizzaBuilder = (props) => {
+	const selectPizzaSize = (sizeIndex) => {
+		props.selectPizzaSize(sizeIndex);
 	}
 
-	selectPizzaSize(sizeIndex) {
-		const initialToppings = this.props.pizzaData.sizes[sizeIndex].defaultToppings.slice();
-		this.setState({ sizeIndex: sizeIndex, toppings: initialToppings });
+	const toggleToppingSelection = (toppingIndex) => {
+		props.toggleToppingSelection(toppingIndex);
 	}
 
-	addPizzaToOrder(event) {
+	const addPizzaToOrder = (event) => {
 		event.preventDefault();
-		this.props.addPizzaToOrder(this.state.sizeIndex, this.state.toppings);
-		this.props.togglePizzaBuilder();
+		props.addPizzaToOrder(props.builder.sizeIndex, props.builder.toppings);
 	}
 
-	toggleToppingSelection(toppingIndex) {
-		const toppingSelectedIndex = this.state.toppings.indexOf(toppingIndex);
-		//if the toppingIndex is in the pizza builder's toppings remove it, otherwise push it to the array
-		const toppings = toppingSelectedIndex > -1 ? [...this.state.toppings.slice(0, toppingSelectedIndex), ...this.state.toppings.slice(toppingSelectedIndex + 1)] : [...this.state.toppings.slice(), toppingIndex];
-		this.setState({ toppings: toppings });
+	const sizes = props.pizzaData.sizes.map((size, i) => {
+		const selected = props.builder.sizeIndex === i ? 'selected' : '';
+		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ props.builder.sizeIndex } selected={ selected } toppings={ props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selectPizzaSize={ selectPizzaSize }/>;
+	});
+
+	let addToppingsDisabled = false;
+
+	if (props.builder.sizeIndex >= 0) {
+		addToppingsDisabled = props.builder.toppings.length >= props.pizzaData.sizes[props.builder.sizeIndex].maxToppings && props.pizzaData.sizes[props.builder.sizeIndex].maxToppings !== null ? true : false;
 	}
 
-  render() {
-  	const sizes = this.props.pizzaData.sizes.map((size, i) => {
-  		const selected = this.state.sizeIndex === i ? 'selected' : '';
-  		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ this.state.sizeIndex } selected={ selected } toppings={ this.props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selectPizzaSize={ this.selectPizzaSize }/>;
-  	});
+	const pizzaToppingsPanel = props.builder.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } size={ props.pizzaData.sizes[props.builder.sizeIndex].name } toppings={ props.pizzaData.toppings } selectedToppings={ props.builder.toppings } toggleToppingSelection={ toggleToppingSelection }/> : null;
+	const addToOrderButton = props.builder.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to order</button> : null;
 
-  	let addToppingsDisabled = false;
-
-  	if (this.state.sizeIndex >= 0) {
-  		addToppingsDisabled = this.state.toppings.length >= this.props.pizzaData.sizes[this.state.sizeIndex].maxToppings && this.props.pizzaData.sizes[this.state.sizeIndex].maxToppings !== null ? true : false;
-  	}
-
-  	const pizzaToppingsPanel = this.state.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } size={ this.props.pizzaData.sizes[this.state.sizeIndex].name } toppings={ this.props.pizzaData.toppings } selectedToppings={ this.state.toppings } toggleToppingSelection={ this.toggleToppingSelection }/> : null;
-  	const addToOrderButton = this.state.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to order</button> : null;
-
-    return (
-	    <div id="pizza-builder">
-	    	<form onSubmit={ this.addPizzaToOrder }>
-		      <h3>Pizza Builder</h3>
-		    	<h4>Select Size</h4>
-		    	<ul className="builder-size-selection">
-		    		{ sizes }
-		    	</ul>
-		      { pizzaToppingsPanel }
-		      <div className="pizza-price">Price: ${ (calculatePizzaCost(this.props.pizzaData, this.state.sizeIndex, this.state.toppings)).toFixed(2) }</div>
-		      { addToOrderButton }
-	      </form>
-	    </div>
-  	);
-	}
+  return (
+    <div id="pizza-builder">
+    	<form onSubmit={ addPizzaToOrder }>
+	      <h3>Pizza Builder</h3>
+	    	<h4>Select Size</h4>
+	    	<ul className="builder-size-selection">
+	    		{ sizes }
+	    	</ul>
+	      { pizzaToppingsPanel }
+	      <div className="pizza-price">Price: ${ (calculatePizzaCost(props.pizzaData, props.builder.sizeIndex, props.builder.toppings)).toFixed(2) }</div>
+	      { addToOrderButton }
+      </form>
+    </div>
+  );
 }
 
 export default PizzaBuilder;

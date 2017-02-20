@@ -3,7 +3,7 @@ import OrderDashboard from './OrderDashboard.jsx';
 
 class App extends React.Component {
   componentDidMount() {
-    console.log("Pizza prices are volatile! Gathering update-to-date pizza prices...");
+    console.log("Pizza prices are volatile! Gathering update-to-date prices...");
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     xhr.open("POST", "http://core-graphql.dev.waldo.photos/pizza");
