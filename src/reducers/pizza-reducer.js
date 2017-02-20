@@ -9,7 +9,7 @@ const initialState = {
   ],
   toppings: [
     { name: "mozzarella", price: 0 },
-    { name: "buffalo mozzerella", price: 1.5 },
+    { name: "buffalo mozzarella", price: 1.5 },
     { name: "ricotta", price: .75 },
     { name: "pepperoni", price: 1 },
     { name: "olives", price: 1.25 },

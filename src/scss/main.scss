@@ -1,16 +1,18 @@
-@import url("https://fonts.googleapis.com/css?family=Oxygen");
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
 body {font-family: "Oxygen", sans-serif;}
 h1,h2,h3,h4,h5,h6 {font-weight: bold; margin: 10px 0;}
 h1 {font-size: 2.2em;}
-h3 {font-size: 1.8em;}
+h3 {font-size: 2.0em; margin-bottom: 20px;}
 h4 {font-size: 1.4em;}
+h4.pizza-price {border-top: 1px solid #eee; padding-top: 20px;}
+h5 {font-size: 1.3em;}
 
 .container {
   margin: 20px;
 }
 
 .order-dashboard {
-
+  text-align: center;
 }
 
 #pizza-builder {
@@ -35,13 +37,13 @@ button {
   -webkit-transition-duration: 0.3s;
 }
 
-button.add-pizza-button {
+button.add-pizza-button, button.add-to-order-button {
   border: 2px solid #03c;
   background-color: #03c;
   width: 200px;
 }
 
-button.add-pizza-button:hover {
+button.add-pizza-button:hover, button.add-to-order-button:hover {
   border: 2px solid #03c;
   background-color: #fff;
   color: #03c;
@@ -75,6 +77,7 @@ ul.builder-size-selection {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  margin: 30px 0;
 }
 
 ul.builder-size-selection > li {
@@ -82,10 +85,49 @@ ul.builder-size-selection > li {
   height: auto;
 }
 
+ul.builder-size-selection > li > strong {
+  display: block;
+  font-size: 1.6em;
+  margin: 10px 0;
+}
+
+ul.builder-size-selection > li > div {
+  font-size: 1em;
+  margin-bottom: 4px;
+}
+
+ul.builder-size-selection > li > ul.toppings > li {
+  display: block;
+  font-size: .9em;
+  margin: 5px 0;
+}
+
+ul.builder-size-selection > li > em {
+  display: block;
+  margin: 10px 0;
+}
+
+ul.builder-size-selection > li.selected {
+  background-color: #038;
+  color: #fff;
+}
+
 ul.builder-size-selection > li > button {
   border: 2px solid #038;
   background-color: #038;
   width: 80%;
+}
+
+ul.builder-size-selection > li > .selected-size {
+  display: block;
+  width: 75%;
+  border: 1px solid #fff;
+  border-left: 0;
+  border-right: 0;
+  padding: 15px;
+  margin: 20px auto 10px;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 ul.builder-size-selection > li > button:hover {
@@ -97,7 +139,7 @@ ul.builder-size-selection > li > button:hover {
 ul.builder-toppings-selection {
   display: flex;
   flex-flow: row wrap;
-  margin: 0 10%;
+  margin: 30px 10%;
 }
 
 ul.builder-toppings-selection > li {
@@ -121,4 +163,31 @@ ul.builder-toppings-selection > li > button {
   border: 2px solid #038;
   background-color: #038;
   width: 200px;
+}
+
+ul.order-pizzas {
+  border: 1px solid #777;
+  padding: 20px;
+}
+
+ul.order-pizzas > li {
+  border-bottom: 1px solid #e7e7e7;
+  padding: 10px 0;
+}
+
+ul.order-pizzas > li:last-of-type {
+  border: 0;
+}
+
+.order-toppings-title {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+ul.order-toppings {
+  font-size: .9em;
+}
+
+ul.order-toppings > li {
+
 }

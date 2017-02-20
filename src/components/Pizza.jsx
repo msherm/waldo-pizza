@@ -15,9 +15,9 @@ const Pizza = (props) => {
 
   return (
     <li>
-      Pizza Id: { props.pizzaId }, Size: { props.orderDetails.size }
-      <h4>Toppings</h4>
-      <ul className="toppings">
+      <h4>{ props.pizzaData.sizes[props.orderDetails.size].name } Pizza</h4>
+      <div className="order-toppings-title">Toppings</div>
+      <ul className="order-toppings">
         { toppings }
       </ul>
       <button className="remove-pizza-button" onClick={ removePizzaFromOrder }>Remove Pizza</button>

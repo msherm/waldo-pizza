@@ -7,7 +7,7 @@ const OrderDashboard = (props) => {
     props.togglePizzaBuilder();
   }
 
-  const orders = props.orders.map((order, i) => {
+  const pizzas = props.orders.map((order, i) => {
     return (
       <Pizza key={ i } pizzaId={ i } pizzaData={ props.pizzaData } orderDetails={ order } removePizzaFromOrder={ props.removePizzaFromOrder }/>
     );
@@ -23,9 +23,9 @@ const OrderDashboard = (props) => {
     <div className="order-dashboard">
       <button className="add-pizza-button" onClick={ togglePizzaBuilder }>Add a Pizza</button>
       { pizzaBuilderInterface }
-      <h3>Orders</h3>
-      <ul className="pending-orders">
-        { orders }
+      <h3>Order Pizzas</h3>
+      <ul className="order-pizzas">
+        { pizzas }
       </ul>
       <h3>Total</h3>
       <button className="place-order-button">Place Order</button>

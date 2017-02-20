@@ -36,12 +36,11 @@ class PizzaBuilder extends React.Component {
 
   render() {
   	const sizes = this.props.pizzaData.sizes.map((size, i) => {
-  		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ this.state.sizeIndex} toppings={ this.props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selectPizzaSize={ this.selectPizzaSize }/>;
+  		const selected = this.state.sizeIndex === i ? 'selected' : '';
+  		return <PizzaSizeSelector key={ i } choice={ i } currentSizeIndex={ this.state.sizeIndex } selected={ selected } toppings={ this.props.pizzaData.toppings } defaultToppings={ size.defaultToppings } size={ size } selectPizzaSize={ this.selectPizzaSize }/>;
   	});
 
-  	const selectedBase = this.state.sizeIndex && this.state.sizeIndex >= 0 ? <strong>{ this.props.pizzaData.sizes[this.state.sizeIndex].name }</strong> : null;
-  	const pizzaToppingsPanel = this.state.sizeIndex > -1 ? <PizzaToppings toppings={ this.props.pizzaData.toppings } selectedToppings={ this.state.toppings } toggleToppingSelection={ this.toggleToppingSelection }/> : null;
-
+  	const pizzaToppingsPanel = this.state.sizeIndex > -1 ? <PizzaToppings size={ this.props.pizzaData.sizes[this.state.sizeIndex].name } toppings={ this.props.pizzaData.toppings } selectedToppings={ this.state.toppings } toggleToppingSelection={ this.toggleToppingSelection }/> : null;
 
   	let basePrice = 0;
   	let toppingsTotalPrice = 0;
@@ -56,21 +55,19 @@ class PizzaBuilder extends React.Component {
 				}.bind(this), 0);
 	  	};
 
-	  	addToOrderButton = <input type="submit" value="Add to order"/>;
+	  	addToOrderButton = <button className="add-to-order-button" type="submit">Add to order</button>;
   	}
 
     return (
 	    <div id="pizza-builder">
 	    	<form onSubmit={ this.addPizzaToOrder }>
 		      <h3>Pizza Builder</h3>
-		    	<h4>Select a base size</h4>
+		    	<h4>Select Size</h4>
 		    	<ul className="builder-size-selection">
 		    		{ sizes }
 		    	</ul>
-		    	{ selectedBase }
-		      <h4>Select your toppings</h4>
 		      { pizzaToppingsPanel }
-		      <h4>Price: ${ (basePrice + toppingsTotalPrice).toFixed(2) }</h4>
+		      <h4 className="pizza-price">Price: ${ (basePrice + toppingsTotalPrice).toFixed(2) }</h4>
 		      { addToOrderButton }
 	      </form>
 	    </div>
