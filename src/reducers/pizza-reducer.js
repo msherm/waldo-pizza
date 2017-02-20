@@ -3,9 +3,9 @@ import * as types from '../actions/action-types';
 const initialState = {
   sizes: [
     { name: "small", price: 5, maxToppings: 4, defaultToppings: [0] },
-    { name: "medium", price: 7.55, maxToppings: 6, defaultToppings: [0, 1] },
-    { name: "large", price: 10.99, maxToppings: 8, defaultToppings: [0, 1, 5] },
-    { name: "giant", price: 16.5, maxToppings: null, defaultToppings: [0, 1, 5]  },
+    { name: "medium", price: 7.05, maxToppings: 6, defaultToppings: [0, 1] },
+    { name: "large", price: 9.99, maxToppings: 8, defaultToppings: [0, 1, 5] },
+    { name: "giant", price: 13.5, maxToppings: null, defaultToppings: [0, 1, 5]  },
   ],
   toppings: [
     { name: "mozzarella", price: 0 },

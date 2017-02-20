@@ -3,11 +3,9 @@ import PizzaBuilder from './PizzaBuilder.jsx';
 import Order from './Order.jsx';
 
 const OrderDashboard = (props) => {
-
   const togglePizzaBuilder = (event) => {
     props.togglePizzaBuilder();
   }
-  const cls = 'OrderDashboard' + (props.isSelected ? ' active' : '');
 
   const orders = props.orders.map((order, i) => {
     return (
