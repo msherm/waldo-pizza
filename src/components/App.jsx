@@ -1,19 +1,21 @@
 import React, { PropTypes } from 'react';
 import OrderDashboard from './OrderDashboard.jsx';
+import * as endpoints from '../common/endpoints';
+import * as queries from '../graphql/queries';
 
 class App extends React.Component {
   componentDidMount() {
     console.log("Pizza prices are volatile! Gathering update-to-date prices...");
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    xhr.open("POST", "http://core-graphql.dev.waldo.photos/pizza");
+    xhr.open("POST", endpoints.waldoPizza);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onload = () => {
       const pizzaSizes = xhr.response.data.pizzaSizes;
       this.props.updatePizzaData(pizzaSizes);
     };
-    xhr.send(JSON.stringify({query: "{pizzaSizes {name, maxToppings, basePrice, toppings {topping {name, price}, defaultSelected} } }"}));
+    xhr.send(JSON.stringify({query: queries.queryPizzaSizeData }));
   }
 
   render() {
