@@ -5,12 +5,12 @@ import * as queries from '../graphql/queries';
 
 class App extends React.Component {
   componentDidMount() {
-    console.log("Pizza prices are volatile! Gathering update-to-date prices...");
+    console.log('Pizza prices are volatile! Gathering update-to-date prices...');
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    xhr.open("POST", endpoints.waldoPizza);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("Accept", "application/json");
+    xhr.open('POST', endpoints.waldoPizza);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Accept', 'application/json');
     xhr.onload = () => {
       const pizzaSizes = xhr.response.data.pizzaSizes;
       this.props.updatePizzaData(pizzaSizes);

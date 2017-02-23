@@ -5,7 +5,7 @@ const Pizza = (props) => {
   const toppings = props.orderDetails.toppings.map((toppingIndex, i) => {
     return (
       <li key={ i }>
-        { props.pizzaData.sizes[props.orderDetails.size].toppings[toppingIndex].topping.name }
+        { props.pizzaData.sizes[props.orderDetails.sizeIndex].toppings[toppingIndex].topping.name }
       </li>
     );
   });
@@ -16,12 +16,12 @@ const Pizza = (props) => {
 
   return (
     <li>
-      <h4>{ props.pizzaData.sizes[props.orderDetails.size].name } Pizza</h4>
+      <h4>{ props.pizzaData.sizes[props.orderDetails.sizeIndex].name } Pizza</h4>
       <div className="order-toppings-title">Toppings</div>
       <ul className="order-toppings">
         { toppings }
       </ul>
-      <div className="pizza-price">Price: ${ (calculatePizzaCost(props.pizzaData, props.orderDetails.size, props.orderDetails.toppings)).toFixed(2) }</div>
+      <div className="pizza-price">Price: ${ (calculatePizzaCost(props.pizzaData, props.orderDetails.sizeIndex, props.orderDetails.toppings)).toFixed(2) }</div>
       <button className="remove-pizza-button" onClick={ removePizzaFromOrder }>Remove Pizza</button>
     </li>
   );

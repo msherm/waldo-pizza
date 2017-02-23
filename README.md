@@ -2,7 +2,7 @@
 
 ## Pizza ordering app
 
-* Queries data from graphQL end point
+* Queries data from graphQL endpoint
 * Allows user to add/remove pizzas from order
 * Disables additional toppings when maximum number for a given size have been added
 * Calculates the cost of individual pizzas based on base size price and toppings

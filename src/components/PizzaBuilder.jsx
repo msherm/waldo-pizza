@@ -28,7 +28,7 @@ const PizzaBuilder = (props) => {
 		addToppingsDisabled = props.builder.toppings.length >= props.pizzaData.sizes[props.builder.sizeIndex].maxToppings && props.pizzaData.sizes[props.builder.sizeIndex].maxToppings !== null ? true : false;
 	}
 
-	const pizzaToppingsPanel = props.builder.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } size={ props.pizzaData.sizes[props.builder.sizeIndex].name } toppings={ props.pizzaData.sizes[props.builder.sizeIndex].toppings } selectedToppings={ props.builder.toppings } toggleToppingSelection={ toggleToppingSelection }/> : null;
+	const pizzaToppingsPanel = props.builder.sizeIndex > -1 ? <PizzaToppings addToppingsDisabled={ addToppingsDisabled } toppings={ props.pizzaData.sizes[props.builder.sizeIndex].toppings } selectedToppings={ props.builder.toppings } toggleToppingSelection={ toggleToppingSelection }/> : null;
 	const addToOrderButton = props.builder.sizeIndex >= 0 ? <button className="add-to-order-button" type="submit">Add to Order</button> : null;
 
   return (

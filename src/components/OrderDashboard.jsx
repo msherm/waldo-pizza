@@ -21,13 +21,13 @@ const OrderDashboard = (props) => {
     pizzaBuilderVisibilityButton = <button className="cancel-button" onClick={ togglePizzaBuilder }>Cancel</button>;
   }
 
-  const orderPizzas = pizzas.length ? <div><h3>Pizza Cart</h3><ul className="order-pizzas">{ pizzas }</ul><div className="pizza-price">Total ${ calculateTotalCost(props.pizzaData, props.orders).toFixed(2) }</div><button className="place-order-button">Place Order</button></div> : null;
+  const pizzaCart = pizzas.length ? <div><h3>Pizza Cart</h3><ul className="order-pizzas">{ pizzas }</ul><div className="pizza-price">Total ${ calculateTotalCost(props.pizzaData, props.orders).toFixed(2) }</div><button className="place-order-button">Place Order</button></div> : null;
 
   return (
     <div className="order-dashboard">
       { pizzaBuilderVisibilityButton }
       { pizzaBuilderInterface }
-      { orderPizzas }
+      { pizzaCart }
     </div>
   );
 }

@@ -18,7 +18,7 @@ export const calculatePizzaCost = (pizzaData, sizeIndex, toppings) => {
 export const calculateTotalCost = (pizzaData, orders) => {
 	if (orders.length) {
 		return orders.reduce((acc, order) => {
-	  		return acc + calculatePizzaCost(pizzaData, order.size, order.toppings);
+	  		return acc + calculatePizzaCost(pizzaData, order.sizeIndex, order.toppings);
 			}, 0);
 	}
 
