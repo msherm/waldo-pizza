@@ -1,5 +1,5 @@
 import React from 'react';
-import { calculatePizzaCost } from '../common/functions.js';
+import { calculatePizzaCost } from '../../common/functions.js';
 
 const Pizza = (props) => {
   const toppings = props.orderDetails.toppings.map((toppingIndex, i) => {

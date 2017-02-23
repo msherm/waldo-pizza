@@ -17,7 +17,6 @@ const PizzaSizeSelector = (props) => {
 
   //if the current selection is the same as this choice, indicated that it's currently selected, otherwise render the select button
   const pizzaSelectorButton = props.currentSizeIndex === props.choice ? <div className='selected-size'>Selected</div> : <button onClick={ selectPizzaSize }>Select</button>;
-  const maxToppings = props.size.maxToppings ? props.size.maxToppings : 'Unlimited!';
 
   return (
     <li className={ props.selected }>
@@ -27,7 +26,7 @@ const PizzaSizeSelector = (props) => {
       <ul className="toppings">
         { toppings }
       </ul>
-      <em>Max Toppings: { maxToppings }</em>
+      <em>Max Toppings: { props.size.maxToppings ? props.size.maxToppings : 'Unlimited!' }</em>
       { pizzaSelectorButton }
     </li>
   );

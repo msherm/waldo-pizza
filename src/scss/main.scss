@@ -189,7 +189,7 @@ ul.builder-toppings-selection {
   }
 }
 
-ul.order-pizzas {
+ul.pizza-cart {
   border: 1px solid #777;
   padding: 20px;
 
@@ -217,7 +217,7 @@ ul.order-toppings {
   border-top: 1px solid #eee;
   padding-top: 20px;
 
-  .order-pizzas & {
+  .pizza-cart & {
     font-size: 1.3em;
     border: 0;
   }

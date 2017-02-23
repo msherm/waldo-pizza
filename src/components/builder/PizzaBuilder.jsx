@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import PizzaSizeSelector from './PizzaSizeSelector.jsx';
 import PizzaToppings from './PizzaToppings.jsx';
-import { calculatePizzaCost } from '../common/functions.js';
+import { calculatePizzaCost } from '../../common/functions.js';
 
 const PizzaBuilder = (props) => {
 	const selectPizzaSize = (sizeIndex) => {
